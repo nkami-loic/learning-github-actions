@@ -1,0 +1,16 @@
+name: Job SQL Data
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-sql:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Exécuter la requête SQL
+        # La flèche < permet "d'injecter" le fichier sql directement dans le moteur sqlite3
+        # Lors de l'examen, vous remplacerez "sqlite3 test.db" par "bq query" !
+        run: sqlite3 base_test.db < sql/transformation.sql
