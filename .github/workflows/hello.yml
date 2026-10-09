@@ -1,0 +1,26 @@
+name: Mon Premier Workflow
+
+# Quand est-ce que ce workflow s'exécute ?
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permet de lancer le workflow manuellement avec un bouton
+
+# Que doit faire ce workflow ?
+jobs:
+  hello-job:
+    # Sur quel type d'ordinateur (Runner) ?
+    runs-on: ubuntu-latest
+    
+    # Quelles sont les étapes ?
+    steps:
+      - name: Dire bonjour
+        run: echo "Hello World! Bienvenue sur GitHub Actions 🚀"
+        
+      - name: Afficher les infos système
+        run: |
+          echo "Système d'exploitation :"
+          uname -a
+          echo "Qui suis-je ?"
+          whoami
