@@ -1,0 +1,17 @@
+name: Pipeline commandes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  clean-orders:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Initialiser la base de données
+        run: sqlite3 base_test.db < sql/init_orders.sql
+
+      - name: Sélectionner les commandes terminées
+        run: sqlite3 base_test.db < sql/clean_orders.sql
